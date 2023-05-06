@@ -3,7 +3,14 @@ import Image from "next/image";
 import { GraphQLClient } from "graphql-request";
 import { useState, useEffect } from "react";
 import SongDisplay from "@/components/SongDisplay";
-import { HStack, VStack, Text, Box, useMediaQuery, Center } from "@chakra-ui/react";
+import {
+  HStack,
+  VStack,
+  Text,
+  Box,
+  useMediaQuery,
+  Center,
+} from "@chakra-ui/react";
 import SongSelect from "@/components/SongSelect";
 import MediaPlayer from "@/components/MediaPlayer";
 
@@ -82,45 +89,47 @@ export default function Home() {
   return (
     <>
       <VStack>
-        {isSmallerThanDesktop ? (<VStack w="100%">
-            <SongSelect onSongSelect={handleSelectChange} />
+        {isSmallerThanDesktop ? (
+          <VStack w="100%">
+            <HStack spacing={0}>
+              <SongSelect onSongSelect={handleSelectChange} />
+              <MediaPlayer
+                src={testTokenInfo?.metadata.losslessAudio.replace(
+                  "ipfs://",
+                  "https://ipfs.io/ipfs/"
+                )}
+              />
+            </HStack>
             <Box w={"95%"}>
               <Box borderWidth="1px" borderRadius="lg" p="2">
                 <Center>
-                <Text>{testTokenInfo?.metadata.description}</Text>
+                  <Text>{testTokenInfo?.metadata.description}</Text>
                 </Center>
               </Box>
               <Box borderWidth="1px" borderRadius="lg" p="2">
                 <Center>
-                <Text>{testTokenInfo?.metadata.collaborators}</Text>
+                  <Text>{testTokenInfo?.metadata.collaborators}</Text>
                 </Center>
               </Box>
             </Box>
 
             <Box borderWidth="1px" borderRadius="lg" p="2" w={"90%"}>
               <Center>
-              <Text>Editions in Exisistence: {fullTokenArray?.length}</Text>
+                <Text>Editions in Exisistence: {fullTokenArray?.length}</Text>
               </Center>
             </Box>
-
-            <MediaPlayer
-              src={testTokenInfo?.metadata.losslessAudio.replace(
-                "ipfs://",
-                "https://ipfs.io/ipfs/"
-              )}
-            />
-          </VStack>) : (
-            
+          </VStack>
+        ) : (
           <HStack justifyContent={"center"} w="100%">
             <SongSelect onSongSelect={handleSelectChange} />
             <Box>
               <HStack>
-              <Box borderWidth="1px" borderRadius="lg" p="2" >
-                <Text>{testTokenInfo?.metadata.description}</Text>
-              </Box>
-              <Box borderWidth="1px" borderRadius="lg" p="2">
-                <Text>{testTokenInfo?.metadata.collaborators}</Text>
-              </Box>
+                <Box borderWidth="1px" borderRadius="lg" p="2">
+                  <Text>{testTokenInfo?.metadata.description}</Text>
+                </Box>
+                <Box borderWidth="1px" borderRadius="lg" p="2">
+                  <Text>{testTokenInfo?.metadata.collaborators}</Text>
+                </Box>
               </HStack>
             </Box>
 
@@ -135,7 +144,6 @@ export default function Home() {
               )}
             />
           </HStack>
-          
         )}
 
         {isSmallerThanDesktop ? (

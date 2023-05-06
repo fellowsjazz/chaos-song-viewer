@@ -60,7 +60,7 @@ export default function SongSelect(props) {
   ];
 
   return (
-    <Select placeholder="Select Song" onChange={handleSelectChange} variant='outline' p="10px" maxW="400px">
+    <Select placeholder="Select Song" onChange={handleSelectChange} variant='outline' p="10px" maxW="400px" textAlign={"center"}>
       {options.map((option) => (
         <option key={option.value} value={option}>
           {option}
