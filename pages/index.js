@@ -17,7 +17,7 @@ import MediaPlayer from "@/components/MediaPlayer";
 const zoraAPI = new GraphQLClient("https://api.zora.co/graphql");
 
 export default function Home() {
-  const [isSmallerThanDesktop] = useMediaQuery("(max-width: 1024px)");
+  const [isSmallerThanDesktop] = useMediaQuery("(max-width: 1080px)");
   const [testTokenInfo, setTestTokenInfo] = useState();
   const [fullTokenArray, setFullTokenArray] = useState();
   const [songToQuery, setSongToQuery] = useState("Moonrise");
@@ -53,7 +53,7 @@ export default function Home() {
       console.log(data);
       setFullTokenArray(data.tokens.nodes);
       setTestTokenInfo(data.tokens.nodes[0].token);
-      console.log("set testTokenInfo to: ", data.tokens.nodes[0].token);
+      console.log("set testTokenInfo to: ", data.tokens.nodes[0]?.token);
     }
     getData();
   }, [apiQuery]);

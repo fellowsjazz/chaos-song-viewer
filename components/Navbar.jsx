@@ -3,7 +3,7 @@ import { Flex, Text, Center, Image, useMediaQuery, Box } from "@chakra-ui/react"
 import { ConnectKitButton } from "connectkit";
 
 export default function Navbar() {
-  const [isSmallerThanDesktop] = useMediaQuery("(max-width: 1024px)");
+  const [isSmallerThanDesktop] = useMediaQuery("(max-width: 1080px)");
 
   return (
     <Flex flexDir={"row"} justify={"space-between"}>

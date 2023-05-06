@@ -50,7 +50,7 @@ export default function SongSelect(props) {
     "Bonsai",
     "Six of Wands",
     "Mad Vision",
-    "iNVASiON",
+    "iNVASiON ",
     "Oxytocin",
     "FROLiC",
     "OuttaControl!",
