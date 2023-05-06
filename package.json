@@ -9,8 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.6.1",
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
+    "connectkit": "^1.2.3",
+    "ethers": "^5.7.2",
+    "framer-motion": "^10.12.8",
+    "fs": "^0.0.1-security",
+    "graphql-request": "^6.0.0",
     "next": "13.3.1",
+    "opensea-js": "^5.0.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.8.0",
+    "wagmi": "^0.12.12"
   }
 }
