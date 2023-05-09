@@ -1,5 +1,5 @@
 import React from "react";
-import { Select } from "@chakra-ui/react";
+import { Select, Box, ColorModeProvider } from "@chakra-ui/react";
 import { useState } from "react";
 
 export default function SongSelect(props) {
@@ -7,8 +7,8 @@ export default function SongSelect(props) {
 
   function handleSelectChange(event) {
     setSelectedSong(event.target.value);
-    console.log("Selected Song: ", event.target.value)
-    props.onSongSelect(event.target.value)
+    console.log("Selected Song: ", event.target.value);
+    props.onSongSelect(event.target.value);
   }
 
   const options = [
@@ -59,13 +59,28 @@ export default function SongSelect(props) {
     "Way Of The DAO",
   ];
 
+  const customOptionStyles = {
+    bg: "#181818"
+  }
+
   return (
-    <Select placeholder="Select Song" onChange={handleSelectChange} variant='outline' p="10px" maxW="400px" textAlign={"center"}>
+    <ColorModeProvider value="dark">
+    <Select
+      placeholder="SELECT SONG"
+      onChange={handleSelectChange}
+      border={"1px solid rgba(90, 90, 90, 0.25)"}
+      boxShadow={"4px 4px 12px rgba(117, 117, 117, 0.15);"}
+      w="356px"
+      textAlign={"left"}
+      bgColor={"#181818"}
+    iconSize="s"
+    variant={"outline"}>
       {options.map((option) => (
-        <option key={option.value} value={option}>
-          {option}
+        <option key={option.value} value={option} style={customOptionStyles}>
+          {option.toUpperCase()}
         </option>
       ))}
     </Select>
+    </ColorModeProvider>
   );
 }

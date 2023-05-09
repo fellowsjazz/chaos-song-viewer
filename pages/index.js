@@ -108,7 +108,7 @@ export default function Home() {
               </Box>
               <Box borderWidth="1px" borderRadius="lg" p="2">
                 <Center>
-                  <Text>{testTokenInfo?.metadata.collaborators}</Text>
+                  <Text>{testTokenInfo?.metadata.collaborators.replaceAll(", "," · ")}</Text>
                 </Center>
               </Box>
             </Box>
@@ -120,21 +120,24 @@ export default function Home() {
             </Box>
           </VStack>
         ) : (
-          <HStack justifyContent={"center"} w="100%">
+          <HStack w="78%" justify={"flex-start"} justifyContent={"space-between"} pb={"40px"} pt={"52px"} maxW={"1285px"}>
             <SongSelect onSongSelect={handleSelectChange} />
             <Box>
               <HStack>
-                <Box borderWidth="1px" borderRadius="lg" p="2">
-                  <Text>{testTokenInfo?.metadata.description}</Text>
+                <Box pr={"22px"}>
+                  <Text>{testTokenInfo?.metadata.description.split(",")[0].toUpperCase()}</Text>
                 </Box>
-                <Box borderWidth="1px" borderRadius="lg" p="2">
-                  <Text>{testTokenInfo?.metadata.collaborators}</Text>
+                <Box>
+                  <Text>{testTokenInfo?.metadata.description.split(",")[1].replace(".","").toUpperCase()}</Text>
+                </Box>
+                <Box p="2">
+                  <Text pl={"100.5px"}>{testTokenInfo?.metadata.collaborators.replaceAll(", ","  ·  ").toUpperCase()}</Text>
                 </Box>
               </HStack>
             </Box>
 
-            <Box borderWidth="1px" borderRadius="lg" p="2">
-              <Text>Editions in Exisistence: {fullTokenArray?.length}</Text>
+            <Box p="2">
+              <Text>{fullTokenArray?.length} EDITIONS</Text>
             </Box>
 
             <MediaPlayer
@@ -153,7 +156,7 @@ export default function Home() {
             ))}
           </VStack>
         ) : (
-          <HStack flexWrap="wrap">
+          <HStack flexWrap="wrap" justifyContent={"center"} w={"100%"} maxW={"1500px"}>
             {fullTokenArray?.map((token, index) => (
               <SongDisplay key={index} token={token.token} />
             ))}
