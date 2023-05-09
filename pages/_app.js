@@ -10,6 +10,8 @@ import { Flex } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
+import Fonts from "@/components/Fonts";
+
 
 const alchemyId = process.env.ALCHEMY_ID;
 
@@ -19,6 +21,8 @@ const client = createClient(
     alchemyId,
   })
 );
+
+
 
 //creating the default chakra theme
 
@@ -37,15 +41,17 @@ export default function App({ Component, pageProps }) {
       },
     },
     fonts:{
-      
+      body: `'Neue Haas Grotesk Display Pro', sans-serif`
     }
   });
+  
   
 
   return (
     <WagmiConfig client={client}>
       <ConnectKitProvider theme="midnight">
         <ChakraProvider theme={theme}>
+          <Fonts/>
           
           <Flex flexDir={"column"} bgColor={"#131313"}>
             <Navbar />

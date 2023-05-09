@@ -131,7 +131,7 @@ export default function Home() {
                   <Text>{testTokenInfo?.metadata.description.split(",")[1].replace(".","").toUpperCase()}</Text>
                 </Box>
                 <Box p="2">
-                  <Text pl={"100.5px"}>{testTokenInfo?.metadata.collaborators.replaceAll(", ","  ·  ").toUpperCase()}</Text>
+                  <Text pl={"100.5px"}>{testTokenInfo?.metadata.collaborators.replaceAll(", ","  •  ").toUpperCase()}</Text>
                 </Box>
               </HStack>
             </Box>
