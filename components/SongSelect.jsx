@@ -1,9 +1,10 @@
 import React from "react";
-import { Select, Box, ColorModeProvider } from "@chakra-ui/react";
+import { Select, Box, ColorModeProvider, useMediaQuery } from "@chakra-ui/react";
 import { useState } from "react";
 
 export default function SongSelect(props) {
   const [selectedSong, setSelectedSong] = useState();
+  const [isSmallerThanDesktop] = useMediaQuery("(max-width: 1080px)");
 
   function handleSelectChange(event) {
     setSelectedSong(event.target.value);
@@ -70,7 +71,7 @@ export default function SongSelect(props) {
       onChange={handleSelectChange}
       border={"1px solid rgba(90, 90, 90, 0.25)"}
       boxShadow={"4px 4px 12px rgba(117, 117, 117, 0.15);"}
-      w="356px"
+      w={isSmallerThanDesktop ? "90%":"356px"}
       textAlign={"left"}
       bgColor={"#181818"}
     iconSize="s"

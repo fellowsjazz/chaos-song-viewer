@@ -91,15 +91,14 @@ export default function Home() {
       <VStack>
         {isSmallerThanDesktop ? (
           <VStack w="100%">
-            <HStack spacing={0}>
-              <SongSelect onSongSelect={handleSelectChange} />
-              <MediaPlayer
-                src={testTokenInfo?.metadata.losslessAudio.replace(
-                  "ipfs://",
-                  "https://ipfs.io/ipfs/"
-                )}
-              />
-            </HStack>
+            <SongSelect onSongSelect={handleSelectChange} />
+            <MediaPlayer
+              src={testTokenInfo?.metadata.losslessAudio.replace(
+                "ipfs://",
+                "https://ipfs.io/ipfs/"
+              )}
+            />
+
             <Box w={"95%"}>
               <Box borderWidth="1px" borderRadius="lg" p="2">
                 <Center>
@@ -108,7 +107,12 @@ export default function Home() {
               </Box>
               <Box borderWidth="1px" borderRadius="lg" p="2">
                 <Center>
-                  <Text>{testTokenInfo?.metadata.collaborators.replaceAll(", "," · ")}</Text>
+                  <Text>
+                    {testTokenInfo?.metadata.collaborators.replaceAll(
+                      ", ",
+                      " · "
+                    )}
+                  </Text>
                 </Center>
               </Box>
             </Box>
@@ -120,18 +124,38 @@ export default function Home() {
             </Box>
           </VStack>
         ) : (
-          <HStack w="78%" justify={"flex-start"} justifyContent={"space-between"} pb={"40px"} pt={"52px"} maxW={"1285px"}>
+          <HStack
+            w={"100%"}
+            justify={"flex-start"}
+            justifyContent={"space-between"}
+            pb={"40px"}
+            pt={"52px"}
+            maxW={"1285px"}
+          >
             <SongSelect onSongSelect={handleSelectChange} />
             <Box>
               <HStack>
                 <Box pr={"22px"}>
-                  <Text>{testTokenInfo?.metadata.description.split(",")[0].toUpperCase()}</Text>
+                  <Text>
+                    {testTokenInfo?.metadata.description
+                      .split(",")[0]
+                      .toUpperCase()}
+                  </Text>
                 </Box>
                 <Box>
-                  <Text>{testTokenInfo?.metadata.description.split(",")[1].replace(".","").toUpperCase()}</Text>
+                  <Text>
+                    {testTokenInfo?.metadata.description
+                      .split(",")[1]
+                      .replace(".", "")
+                      .toUpperCase()}
+                  </Text>
                 </Box>
                 <Box p="2">
-                  <Text pl={"100.5px"}>{testTokenInfo?.metadata.collaborators.replaceAll(", ","  •  ").toUpperCase()}</Text>
+                  <Text pl={"100.5px"}>
+                    {testTokenInfo?.metadata.collaborators
+                      .replaceAll(", ", "  •  ")
+                      .toUpperCase()}
+                  </Text>
                 </Box>
               </HStack>
             </Box>
@@ -156,7 +180,12 @@ export default function Home() {
             ))}
           </VStack>
         ) : (
-          <HStack flexWrap="wrap" justifyContent={"center"} w={"100%"} maxW={"1500px"}>
+          <HStack
+            flexWrap="wrap"
+            justifyContent={"center"}
+            w={"100%"}
+            maxW={"1500px"}
+          >
             {fullTokenArray?.map((token, index) => (
               <SongDisplay key={index} token={token.token} />
             ))}

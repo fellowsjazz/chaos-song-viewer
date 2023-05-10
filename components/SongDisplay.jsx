@@ -13,11 +13,14 @@ import {
   HStack,
   Divider,
   Center,
+  useMediaQuery
 } from "@chakra-ui/react";
 import { FaEye } from "react-icons/fa";
 
 const SongDisplay = ({ token }) => {
   const [showPopover, setShowPopover] = useState(false);
+  const [isSmallerThanDesktop] = useMediaQuery("(max-width: 1080px)");
+
 
   const name = token.name.replace(/.*-\s*/, "");
   const imageURL = token.image.url.replace("ipfs://", "https://ipfs.io/ipfs/");
@@ -43,8 +46,8 @@ const SongDisplay = ({ token }) => {
       <Box
         borderWidth="px"
         borderRadius={"4px"}
-        h="615px"
-        w="408px"
+        h= {isSmallerThanDesktop ? "480px" : "615px"}
+        w= {isSmallerThanDesktop ? "275px" : "408px"}
         align="center"
         borderColor={"rgba(90, 90, 90, 0.25)"}
         boxShadow={"4px 4px 12px rgba(117, 117, 117, 0.15)"}
@@ -54,7 +57,7 @@ const SongDisplay = ({ token }) => {
             href={`https://opensea.io/assets/ethereum/0x8427e46826a520b1264b55f31fcb5ddfdc31e349/${tokenId}`}
             target="_blank"
           >
-            <Image src={imageURL} h="408px" w={"408px"} borderRadius="4px" />
+            <Image src={imageURL} h={isSmallerThanDesktop ? "275px":"408px"}  w={isSmallerThanDesktop ? "275px":"408px"} borderRadius="4px" />
           </a>
           <HStack justify={"space-between"} p={"12px"}>
             <Text color={"#FFFDF8"} fontSize={"12px"}>

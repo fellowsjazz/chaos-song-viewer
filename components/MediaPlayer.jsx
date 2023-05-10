@@ -78,7 +78,7 @@ export default function MediaPlayer({ src }) {
         >
           <HStack pl={"12px"}>
             {isPlaying ? <FaPause /> : <FaPlay />}
-            <Text pl={"10px"}>{formattedTime}</Text>
+            <Text pl={"10px"} letterSpacing={"widest"}>{formattedTime}</Text>
           </HStack>
         </Button>
       </Box>
